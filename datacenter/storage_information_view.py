@@ -3,20 +3,8 @@ from datacenter.models import Visit
 from django.shortcuts import render
 from django.utils.timezone import localtime
 
-
-def get_duration(visit):
-    duration = (localtime() - visit.entered_at).total_seconds()
     
-    return duration
-
-
-def format_duration(duration):
-    hours = int(duration//3600)
-    minutes = int((duration%3600)//60)
     
-    return f"{hours}:{minutes}"
-
-
 def storage_information_view(request):
     visits = Visit.objects.filter(leaved_at = None)
 
@@ -28,7 +16,8 @@ def storage_information_view(request):
             {
                 'who_entered': visit.passcard,
                 'entered_at': visit.entered_at,
-                'duration': format_duration(get_duration(visit)),
+                'duration': visit.format_duration(visit.get_duration(leaved_at=localtime())),
+                'is_strange': visit.is_visit_long(visit.get_duration(leaved_at=localtime()))
             }
         )
     context = {
