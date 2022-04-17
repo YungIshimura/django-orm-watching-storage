@@ -4,11 +4,11 @@ from django.utils.timezone import localtime
 
 
 def storage_information_view(request):
-    visits = Visit.objects.filter(leaved_at=None)
+    passcards_non_closed_visits = Visit.objects.filter(leaved_at=None)
 
     non_closed_visits = []
 
-    for visit in visits:
+    for visit in passcards_non_closed_visits:
 
         non_closed_visits.append(
             {
