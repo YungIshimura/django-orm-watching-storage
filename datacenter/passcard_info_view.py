@@ -6,11 +6,11 @@ from django.utils.timezone import localtime
 
 def passcard_info_view(request, passcode):
     passcard = Passcard.objects.get(passcode=passcode)
-    visits = Visit.objects.filter(passcard=passcard)
+    passcard_visits = Visit.objects.filter(passcard=passcard)
 
     this_passcard_visits = []
 
-    for visit in visits:
+    for visit in passcard_visits:
         this_passcard_visits.append(
             {
                 'entered_at': visit.entered_at,
