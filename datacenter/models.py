@@ -44,8 +44,4 @@ class Visit(models.Model):
         return f"{hours}:{minutes}"
     
     def is_visit_long(self, duration, minutes=60):
-        test = duration//60
-        if test >=minutes:
-            return True
-        else:
-            return False
+        duration//60 >=minutes
