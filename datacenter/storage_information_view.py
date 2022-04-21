@@ -4,13 +4,13 @@ from django.utils.timezone import localtime
 
 
 def storage_information_view(request):
-    passcards_non_closed_visits = Visit.objects.filter(leaved_at=None)
+    non_closed_visits = Visit.objects.filter(leaved_at=None)
 
-    non_closed_visits = []
+    serialized_non_closed_visits = []
 
-    for visit in passcards_non_closed_visits:
+    for visit in non_closed_visits:
 
-        non_closed_visits.append(
+        serialized_non_closed_visits.append(
             {
                 'who_entered': visit.passcard,
                 'entered_at': visit.entered_at,
@@ -21,6 +21,6 @@ def storage_information_view(request):
             }
         )
     context = {
-        'non_closed_visits': non_closed_visits,
+        'non_closed_visits': serialized_non_closed_visits,
     }
     return render(request, 'storage_information.html', context)
