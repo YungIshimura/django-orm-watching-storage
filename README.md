@@ -11,11 +11,11 @@
 В проекте используется виртуальное окружениe [venv](https://docs.python.org/3/library/venv.html)
 
 ### Переменные окружения:
-* HOST - хост БД
-* PORT - порт БД
-* NAME - название БД
-* USER_NAME - имя пользователя БД
-* PASSWORD - пароль БД
+* DB_HOST - хост БД
+* DB_PORT - порт БД
+* DB_NAME - название БД
+* DB_USER_NAME - имя пользователя БД
+* DB_PASSWORD - пароль БД
 * SECRET_KEY - ключ от БД
 * DEBUG - включение/выключение дебага
 
